@@ -24,8 +24,8 @@ class UpdateCommand extends Command
         $console = new SymfonyStyle($input, $output);
 
         $console->writeln('Checking version...');
-
         $latestVersion = file_get_contents("https://raw.githubusercontent.com/capimichi/tools/master/dist/version.txt");
-        $console->writeln($this->getApplication()->getVersion());
+        $console->writeln('Downloading version...');
+        $console->writeln(__FILE__);
     }
 }
