@@ -10,7 +10,6 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 class UpdateCommand extends Command
 {
 
-
     protected function configure()
     {
         $this
