@@ -1,0 +1,20 @@
+{
+    "name": "capimichi/tools",
+    "description": "Tools bash",
+    "minimum-stability": "dev",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Michele Capicchioni",
+            "email": "capimichi@gmail.com"
+        }
+    ],
+    "require": {
+        "symfony/console": "3.4.x-dev"
+    },
+    "autoload": {
+        "psr-4": {
+            "CapimichiTools\\": "src/"
+        }
+    }
+}
