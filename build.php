@@ -17,6 +17,9 @@ if (!file_exists($tempDistDirectory)) {
     mkdir($tempDistDirectory, 0755, true);
 }
 
+file_put_contents($versionDirectory . "version.txt", $version);
+file_put_contents(dirname($versionDirectory) . DIRECTORY_SEPARATOR . "version.txt", $version);
+
 copy(__DIR__ . DIRECTORY_SEPARATOR . "cmd.php", $tempDistDirectory . DIRECTORY_SEPARATOR . "cmd.php");
 recurse_copy(__DIR__ . DIRECTORY_SEPARATOR . "vendor", $tempDistDirectory . DIRECTORY_SEPARATOR . "vendor");
 recurse_copy(__DIR__ . DIRECTORY_SEPARATOR . "src", $tempDistDirectory . DIRECTORY_SEPARATOR . "src");
@@ -24,6 +27,9 @@ recurse_copy(__DIR__ . DIRECTORY_SEPARATOR . "src", $tempDistDirectory . DIRECTO
 $pharFile = $versionDirectory . "cmtools.phar";
 if (file_exists($pharFile)) {
     unlink($pharFile);
+}
+if (file_exists($pharFile . ".gz")) {
+    unlink($pharFile . ".gz");
 }
 $p = new Phar($pharFile);
 $p->buildFromDirectory($tempDistDirectory);
