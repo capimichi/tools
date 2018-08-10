@@ -26,6 +26,13 @@ class UpdateCommand extends Command
         $console->writeln('Checking version...');
         $latestVersion = file_get_contents("https://raw.githubusercontent.com/capimichi/tools/master/dist/version.txt");
         $console->writeln('Downloading version...');
-        $console->writeln(__FILE__);
+        $latestVersionUrl = "https://github.com/capimichi/tools/raw/master/dist/{$latestVersion}/cmtools.phar";
+        $latestVersionContent = file_get_contents($latestVersionUrl);
+        $executablePath = str_replace([
+            'phar://',
+            '/src/Command/UpdateCommand.php',
+        ], '', __FILE__);
+
+        file_put_contents($executablePath, $latestVersionContent);
     }
 }
