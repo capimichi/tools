@@ -5,7 +5,7 @@ require __DIR__ . '/vendor/autoload.php';
 use Symfony\Component\Console\Application;
 
 
-$application = new Application();
+$application = new Application('Capimichi Tools', '@package_version@');
 
 $applicationsDirectory = __DIR__ . DIRECTORY_SEPARATOR . "src" . DIRECTORY_SEPARATOR . "Command" . DIRECTORY_SEPARATOR;
 
