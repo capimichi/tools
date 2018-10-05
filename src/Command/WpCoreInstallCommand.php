@@ -26,7 +26,11 @@ class WpCoreInstallCommand extends Command
     {
         $io = new SymfonyStyle($input, $output);
 
-        $projectPath = rtrim($input->getOption('project') ? $input->getOption('project') : $io->ask('Proect path'), DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
+        $projectPath = rtrim($input->getOption('project') ? $input->getOption('project') : $io->ask('Project path'), DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
+
+        if (!file_exists($projectPath)) {
+            mkdir($projectPath, 0777, true);
+        }
 
         $wpZipFile = $projectPath . "wp.zip";
 

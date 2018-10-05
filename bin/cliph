@@ -1,0 +1,16 @@
+<?php
+
+require dirname(__DIR__) . '/vendor/autoload.php';
+
+use Symfony\Component\Console\Application;
+use CapimichiTools\Command;
+
+
+$application = new Application('Capimichi Tools', '@package_version@');
+
+$application->add(new CapimichiTools\Command\UpdateCommand());
+$application->add(new CapimichiTools\Command\WpCoreInstallCommand());
+
+
+
+$application->run();
